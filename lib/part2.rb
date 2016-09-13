@@ -3,11 +3,28 @@ class NoSuchStrategyError < StandardError ; end
 
 def rps_game_winner(game)
   raise WrongNumberOfPlayersError unless game.length == 2
-  # YOUR CODE HERE
+  game.each { |player_strategy| raise NoSuchStrategyError unless player_strategy[1] =~ /\A[rps]\z/i }
+
+  # beats(x) == y mean x beats y
+  beats = {'s' => 'p', 'p' => 'r', 'r' => 's'}
+  if beats[game[1][1].downcase] == game[0][1].downcase then game[1] else game[0] end
 end
 
 def rps_tournament_winner(tournament)
-  # YOUR CODE HERE
+  # base case
+  if tournament[0][0].kind_of? String then return rps_game_winner(tournament) end
+
+  return rps_game_winner [rps_tournament_winner(tournament[0]), rps_tournament_winner(tournament[1])]
 end
 
-#feel free to add your own helper functions as needed
+tourney =[
+    [['Jim', 'S'], ['John', 'p']],
+    [['Spagett', 'r'], ['Tim', 'r']]
+]
+
+puts rps_tournament_winner tourney
+
+def test_game(game)
+  x = rps_game_winner(game)
+  puts "#{x} won in #{game}"
+end

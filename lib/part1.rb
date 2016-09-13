@@ -24,38 +24,22 @@
 #When you have completed all five parts of the assignment, follow the submission
 #instructions specified in the assignment description to hand-in your work.
 
+#class Fixnum
+  #def even?
+   # self%2 == 0
+  #end
+#end
+
 def palindrome?(str)
-  # YOUR CODE HERE
+  if str.length == 0 or str.length == 1 then return true end
+    
+  cleaned_str = str.downcase.gsub(/[^a-zA-Z0-9]/, '')
+  cleaned_str == cleaned_str.reverse
+  #length = cleaned_str.length
+  #first_half = cleaned_str[0..(length/2 - 1)]
+  #second_half = cleaned_str[(length/2 + (length.even? ? 0 : 1))...length]
+  #first_half == second_half.reverse
 end
 
-def count_words(str)
-  # YOUR CODE HERE
-end
+puts palindrome?("AB AA BA")
 
-
-#the code below this line will test your functions. 
-#You should remove everything below this line prior to submitting your file
-
-
-test_str = "there goes the neighborhood"
-
-if palindrome? test_str
-  puts test_str + " is a palindrome!"
-else
-  puts test_str + " is NOT a palindrome!"
-end
-
-
-test_str = "Madam, I'm Adam"
-
-if palindrome? test_str
-  puts test_str + " is a palindrome!"
-else
-  puts test_str + " is NOT a palindrome!"
-end
-
-
-test_str = "The rent is due on the first day of the month unless the first day of the month falls on a Saturday or Sunday"
-
-word_count = count_words test_str
-puts word_count
