@@ -16,15 +16,3 @@ def rps_tournament_winner(tournament)
 
   return rps_game_winner [rps_tournament_winner(tournament[0]), rps_tournament_winner(tournament[1])]
 end
-
-tourney =[
-    [['Jim', 'S'], ['John', 'p']],
-    [['Spagett', 'r'], ['Tim', 'r']]
-]
-
-puts rps_tournament_winner tourney
-
-def test_game(game)
-  x = rps_game_winner(game)
-  puts "#{x} won in #{game}"
-end

@@ -24,12 +24,6 @@
 #When you have completed all five parts of the assignment, follow the submission
 #instructions specified in the assignment description to hand-in your work.
 
-#class Fixnum
-  #def even?
-   # self%2 == 0
-  #end
-#end
-
 def palindrome?(str)
   if str.length == 0 or str.length == 1 then return true end
     
@@ -41,5 +35,9 @@ def palindrome?(str)
   #first_half == second_half.reverse
 end
 
-puts palindrome?("AB AA BA")
-
+def count_words(string)
+  words =string.downcase.split(/[^a-zA-Z0-9]/).select { |word| word != '' }
+  histogram = Hash.new(0)
+  words.each { |word| histogram[word] += 1 }
+  return histogram
+end
